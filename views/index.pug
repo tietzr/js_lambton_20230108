@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Hello, Pug Templating!
+
+  form(action="/submit", method="POST")
+    label(for="name") Your Name:
+    input(type="text", name="name", required)
+    br
+    button(type="submit") Submit

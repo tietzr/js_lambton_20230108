@@ -1,0 +1,13 @@
+// views/data.pug
+
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="/styles.css")
+  body
+    h1= message
+
+    ul
+      each item in items
+        li= item

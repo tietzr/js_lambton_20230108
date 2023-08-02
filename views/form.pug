@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href="/styles.css")
+
+    // Include jQuery from the CDN
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js")
+
+    // jQuery script for interactive form actions
+    script.
+      $(document).ready(function() {
+        // Hide the submit button initially
+        $('button[type="submit"]').hide();
+
+        // Show the submit button only when the input field is filled
+        $('input[name="name"]').on('input', function() {
+          if ($(this).val().trim() !== '') {
+            $('button[type="submit"]').show();
+          } else {
+            $('button[type="submit"]').hide();
+          }
+        });
+
+        // Show a greeting message upon form submission
+        $('form').on('submit', function(event) {
+          event.preventDefault();
+          const name = $('input[name="name"]').val().trim();
+          if (name !== '') {
+            alert('Hello, ' + name + '! Your form was submitted successfully.');
+          }
+        });
+      });
+
+  body
+    h1 Hello, Pug Templating!
+
+    form(action="/submit", method="POST")
+      label(for="name") Your Name:
+      input(type="text", name="name", required)
+      br
+      // The submit button is hidden initially and shown dynamically using jQuery
+      button(type="submit") Submit
